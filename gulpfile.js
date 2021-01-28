@@ -2,11 +2,15 @@ const gulp = require("gulp");
 const sass = require("gulp-sass");
 const browserSync = require("browser-sync");
 const del = require("del");
+const autoprefixer = require("gulp-autoprefixer");
 
 gulp.task("css", done => {
 
     gulp.src('src/scss/main.scss')
     .pipe(sass())
+    .pipe(autoprefixer({
+        cascade: false
+    }))
     .pipe(gulp.dest('src/css/'))
     .pipe(browserSync.stream());
 
